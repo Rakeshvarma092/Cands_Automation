@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+
+        <!-- report theme: STANDARD or DARK -->
+        <theme>DARK</theme>
+
+        <!-- document encoding (defaults to UTF-8) -->
+        <encoding>UTF-8</encoding>
+
+        <!-- protocol for scripts and stylesheets: HTTP or HTTPS -->
+        <protocol>HTTPS</protocol>
+
+        <!-- enable timeline chart in the report -->
+        <timelineEnabled>true</timelineEnabled>
+
+        <!-- enable offline mode (bundle all assets locally) -->
+        <enableOfflineMode>false</enableOfflineMode>
+
+        <!-- title shown in the browser tab -->
+        <documentTitle>Toucan Automation</documentTitle>
+
+        <!-- report name displayed in the top navigation bar -->
+        <reportName>Toucan Test Report</reportName>
+
+        <developedBy>Azharuddin</developedBy>
+
+        <!-- timestamp format for report entries -->
+        <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+
+        <!-- custom javascript (add within CDATA if needed) -->
+        <scripts><![CDATA[]]></scripts>
+
+        <!-- custom styles (add within CDATA if needed) -->
+        <styles><![CDATA[]]></styles>
+
+    </configuration>
+</extentreports>
