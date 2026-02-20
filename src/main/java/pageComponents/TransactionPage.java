@@ -235,6 +235,7 @@ public class TransactionPage extends DriverUtils {
                 && txt_MCC.getAttribute("value").isEmpty()
                 && txt_MerchantName.getAttribute("value").isEmpty()
                 && txt_TransactionAmount.getAttribute("value").isEmpty();
+
     }
     public boolean isTabActive(String tabName) {
 
