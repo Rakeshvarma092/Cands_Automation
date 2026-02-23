@@ -3,7 +3,6 @@ Feature: Global Search Functionality
 
   As a user of the application
   I want to be able to search and filter transactions in the Global Search transaction page
-  So that I can easily find specific transaction details
 
   Background:
     Given User navigates to Url
@@ -17,23 +16,85 @@ Feature: Global Search Functionality
   Scenario: Verify tabs are displayed
     Then UPI, Cards, Netbanking and Fee & Others tabs should be visible
 
-  @positive
+  @Browser @Branch12
+  Scenario: Verify default active tab
+    Then "Cards" tab should be active by default
+
+  @Browser @Branch13
+    Scenario: Click on each tab
+    When User clicks on "UPI" tab
+    When User clicks on "Cards" tab
+    When User clicks on "Netbanking" tab
+    When User clicks on "Fee & Others" tab
+
+  @Browser @Branch14
   Scenario: Search using valid Transaction Reference Number
     When User selects "Cards" tab
+    And User click on filter
     And User enters valid Transaction Reference Number "TXN123456"
     And User clicks Search
     Then Transaction records should be displayed
 
-  @negative
+  @Browser @Branch15
+  Scenario: Search using valid Transaction Reference Number
+    When User selects "UPI" tab
+    And User click on filter
+    And User enters valid Transaction Reference Number "TXN123456"
+    And User clicks Search
+    Then Transaction records should be displayed
+
+  @Browser @Branch16
+  Scenario: Search using valid Transaction Reference Number
+    When User selects "Netbanking" tab
+    And User click on filter
+    And User enters valid Transaction Reference Number "TXN123456"
+    And User clicks Search
+    Then Transaction records should be displayed
+
+  @Browser @Branch17
+  Scenario: Search using valid Transaction Reference Number
+    When User selects "Fee & Others" tab
+    And User click on filter
+    And User enters valid Transaction Reference Number "TXN123456"
+    And User clicks Search
+    Then Transaction records should be displayed
+
+  @Browser @Branch18
   Scenario: Search using invalid Transaction Reference Number
     When User selects "Cards" tab
+    And User click on filter
     And User enters invalid Transaction Reference Number "INVALID999"
     And User clicks Search
     Then No records found message should be displayed
 
-  @positive
+  @Browser @Branch19
+  Scenario: Search using invalid Transaction Reference Number
+    When User selects "UPI" tab
+    And User click on filter
+    And User enters invalid Transaction Reference Number "INVALID999"
+    And User clicks Search
+    Then No records found message should be displayed
+
+  @Browser @Branch20
+  Scenario: Search using invalid Transaction Reference Number
+    When User selects "Netbanking" tab
+    And User click on filter
+    And User enters invalid Transaction Reference Number "INVALID999"
+    And User clicks Search
+    Then No records found message should be displayed
+
+  @Browser @Branch21
+  Scenario: Search using invalid Transaction Reference Number
+    When User selects "Fee & Others" tab
+    And User click on filter
+    And User enters invalid Transaction Reference Number "INVALID999"
+    And User clicks Search
+    Then No records found message should be displayed
+
+  @Browser @Branch22
   Scenario: Search using multiple valid filters
     When User selects "Cards" tab
+    And User click on filter
     And User enters Card Last 4 Digits "1234"
     And User enters ARN "ARN123456"
     And User enters Merchant ID "MID001"
@@ -41,9 +102,43 @@ Feature: Global Search Functionality
     And User clicks Search
     Then Transaction records should be displayed
 
-  @regression
+  @Browser @Branch23
+  Scenario: Search using multiple valid filters
+    When User selects "UPI" tab
+    And User click on filter
+    And User enters Card Last 4 Digits "1234"
+    And User enters ARN "ARN123456"
+    And User enters Merchant ID "MID001"
+    And User enters Transaction Amount "5000"
+    And User clicks Search
+    Then Transaction records should be displayed
+
+  @Browser @Branch24
+  Scenario: Search using multiple valid filters
+    When User selects "Netbanking" tab
+    And User click on filter
+    And User enters Card Last 4 Digits "1234"
+    And User enters ARN "ARN123456"
+    And User enters Merchant ID "MID001"
+    And User enters Transaction Amount "5000"
+    And User clicks Search
+    Then Transaction records should be displayed
+
+  @Browser @Branch25
+  Scenario: Search using multiple valid filters
+    When User selects "Fee & Others" tab
+    And User click on filter
+    And User enters Card Last 4 Digits "1234"
+    And User enters ARN "ARN123456"
+    And User enters Merchant ID "MID001"
+    And User enters Transaction Amount "5000"
+    And User clicks Search
+    Then Transaction records should be displayed
+
+  @Browser @Branch26
   Scenario: Clear button clears all fields
     When User selects "Cards" tab
+    And User click on filter
     And User enters Card Last 4 Digits "1234"
     And User clicks Clear
     Then All fields should be cleared
@@ -54,11 +149,11 @@ Feature: Global Search Functionality
     Then "<Tab>" tab should be active
 
     Examples:
-      | Tab            |
-      | UPI            |
-      | Cards          |
-      | Netbanking     |
-      | Fee & Others   |
+      | Tab          |
+      | UPI          |
+      | Cards        |
+      | Netbanking   |
+      | Fee & Others |
 
      # ========================= UI VALIDATION =========================
 
@@ -213,11 +308,11 @@ Feature: Global Search Functionality
     Then Page should load results without crashing
 
     Examples:
-      | Tab            |
-      | UPI            |
-      | Cards          |
-      | Netbanking     |
-      | Fee & Others   |
+      | Tab          |
+      | UPI          |
+      | Cards        |
+      | Netbanking   |
+      | Fee & Others |
 
 
   # ========================= MULTI FILTER COMBINATION =========================

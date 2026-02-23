@@ -328,4 +328,8 @@ public class TransactionPage extends DriverUtils {
     public boolean isPageStable() {
         return driver.getTitle() != null;
     }
+
+    public void clickFilter() {
+        btn_Filter.click();
+    }
 }

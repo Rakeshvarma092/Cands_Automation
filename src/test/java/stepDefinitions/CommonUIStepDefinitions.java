@@ -271,4 +271,21 @@ public class CommonUIStepDefinitions extends CorePage {
     public void userSelectsLifeCycleStatus(String value) {
         transactionPage.selectLifeCycleStatus(value);
     }
+
+    @Then("{string} tab should be active by default")
+    public void tabShouldBeActiveByDefault(String tabName) {
+        Assert.assertTrue(
+                transactionPage.isTabActive(tabName),
+                "Expected tab to be active by default: " + tabName);
+    }
+
+    @When("User clicks on {string} tab")
+    public void userClicksOnTab(String tabName) {
+        transactionPage.selectTab(tabName);
+    }
+
+    @And("User click on filter")
+    public void userClickOnFilter() {
+        transactionPage.clickFilter();
+    }
 }
