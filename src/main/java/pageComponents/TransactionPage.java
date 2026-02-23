@@ -332,4 +332,39 @@ public class TransactionPage extends DriverUtils {
     public void clickFilter() {
         btn_Filter.click();
     }
+
+    public boolean areAllCardsFilterFieldsDisplayed() {
+        try {
+            // Filter section header
+            wait.until(ExpectedConditions.visibilityOf(lbl_FilterBy));
+
+            // Text fields
+            return txt_CardNumber.isDisplayed()
+                    && txt_CardBin.isDisplayed()
+                    && txt_InvoiceNumber.isDisplayed()
+                    && txt_TransactionReferenceNumber.isDisplayed()
+                    && txt_ARN.isDisplayed()
+                    && txt_RunNumber.isDisplayed()
+                    && txt_MerchantID.isDisplayed()
+                    && txt_TerminalNumber.isDisplayed()
+                    && txt_MCC.isDisplayed()
+                    && txt_MerchantName.isDisplayed()
+                    && txt_TransactionAmount.isDisplayed()
+
+                    // Dropdowns
+                    && drp_SchemeStatus.isDisplayed()
+                    && drp_SchemeCode.isDisplayed()
+                    && drp_LifeCycleStatus.isDisplayed()
+                    && drp_SettlementStatus.isDisplayed()
+                    && drp_TransactionType.isDisplayed()
+                    && drp_PaymentReleaseStatus.isDisplayed()
+
+                    // Buttons (optional but usually part of filter UI)
+                    && btn_Search.isDisplayed()
+                    && btn_Clear2.isDisplayed();
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

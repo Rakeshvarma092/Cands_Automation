@@ -288,4 +288,11 @@ public class CommonUIStepDefinitions extends CorePage {
     public void userClickOnFilter() {
         transactionPage.clickFilter();
     }
+
+    @Then("All Cards filter fields should be displayed")
+    public void allCardsFilterFieldsShouldBeDisplayed() {
+        Assert.assertTrue(
+                transactionPage.areAllCardsFilterFieldsDisplayed(),
+                "Some Cards filter fields are not displayed");
+    }
 }

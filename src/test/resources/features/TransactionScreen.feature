@@ -143,7 +143,7 @@ Feature: Global Search Functionality
     And User clicks Clear
     Then All fields should be cleared
 
-  @regression
+  @Browser @Branch27
   Scenario Outline: Verify tab switching
     When User selects "<Tab>" tab
     Then "<Tab>" tab should be active
@@ -155,11 +155,11 @@ Feature: Global Search Functionality
       | Netbanking   |
       | Fee & Others |
 
-     # ========================= UI VALIDATION =========================
 
-  @ui
+  @Browser @Branch28
   Scenario: Verify all filter fields are visible in Cards tab
     When User selects "Cards" tab
+    And User click on filter
     Then All Cards filter fields should be displayed
 
 
