@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pageComponents.CorePage;
 
@@ -299,5 +300,70 @@ public class CommonUIStepDefinitions extends CorePage {
     @Then("Validation error should be displayed for Card Number")
     public void validationErrorShouldBeDisplayedForCardNumber() {
         transactionPage.isNoRecordMessageDisplayed();
+    }
+
+    //============================================== OUTGOING FILE =====================================================
+    @When("user navigates to File Processing page")
+    public void userNavigatesToFileProcessingPage() {
+        fileProcessingPage.openFileProcessing();
+    }
+
+    @Then("Outgoing File header should be displayed")
+    public void outgoingFileHeaderShouldBeDisplayed() {
+        fileProcessingPage.isOutgoingFileHeaderVisible();
+    }
+
+    @And("user selects outgoing file transaction type {string}")
+    public void userSelectsOutgoingFileTransactionType(String transactionType) {
+        fileProcessingPage.selectTransactionType(transactionType);
+    }
+
+    @And("user selects {string}")
+    public void userSelects(String option) {
+        switch (option.trim().toLowerCase()) {
+            case "include today":
+                fileProcessingPage.selectIncludeToday();
+                break;
+            case "exclude today":
+                fileProcessingPage.selectExcludeToday();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid option: " + option +
+                        ". Expected 'Include Today' or 'Exclude Today'.");
+        }
+    }
+
+    @And("user clicks Trigger Now")
+    public void userClicksTriggerNow() {
+        fileProcessingPage.clickTriggerNow();
+    }
+
+    @Then("trigger should be initiated successfully")
+    public void triggerShouldBeInitiatedSuccessfully() {
+        Assert.assertTrue(
+                fileProcessingPage.isTriggerSuccessMessageDisplayed(),
+                "Trigger success message was not displayed"
+                );
+    }
+
+    @When("user clicks Outgoing File tab")
+    public void userClicksOutgoingFileTab() {
+        fileProcessingPage.clickOutgoingFileTab();
+    }
+
+    @Then("validation message should be displayed for transaction type")
+    public void validationMessageShouldBeDisplayedForTransactionType() {
+        Assert.assertTrue(
+                fileProcessingPage.isTransactionTypeValidationDisplayed(),
+                "Transaction type validation message was not displayed"
+                );
+    }
+
+    @Then("validation message should be displayed for today selection")
+    public void validationMessageShouldBeDisplayedForTodaySelection() {
+        Assert.assertTrue(
+                "Today selection validation message was not displayed",
+                fileProcessingPage.isTodaySelectionValidationDisplayed()
+        );
     }
 }

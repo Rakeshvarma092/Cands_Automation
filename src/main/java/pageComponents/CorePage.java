@@ -11,6 +11,7 @@ public class CorePage extends DriverUtils {
     public LoginPage loginPage = new LoginPage(driver);
     public DashboardPage dashboardPage = new DashboardPage(driver);
     public TransactionPage transactionPage = new TransactionPage(driver);
+    public FileProcessingPage fileProcessingPage = new FileProcessingPage(driver);
     public OdsReader odsReader = new OdsReader();
     public OTPSteps otpSteps = new OTPSteps();
     public ConfigReader configReader = new ConfigReader();
