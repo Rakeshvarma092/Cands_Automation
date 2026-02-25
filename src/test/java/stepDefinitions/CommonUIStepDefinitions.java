@@ -362,8 +362,8 @@ public class CommonUIStepDefinitions extends CorePage {
     @Then("validation message should be displayed for today selection")
     public void validationMessageShouldBeDisplayedForTodaySelection() {
         Assert.assertTrue(
-                "Today selection validation message was not displayed",
-                fileProcessingPage.isTodaySelectionValidationDisplayed()
-        );
+                fileProcessingPage.isTodaySelectionValidationDisplayed(),
+                "Today selection validation message was not displayed"
+                );
     }
 }
