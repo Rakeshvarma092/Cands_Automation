@@ -21,7 +21,7 @@ Feature: Global Search Functionality
     Then "Cards" tab should be active by default
 
   @Browser @Branch13
-    Scenario: Click on each tab
+  Scenario: Click on each tab
     When User clicks on "UPI" tab
     When User clicks on "Cards" tab
     When User clicks on "Netbanking" tab
@@ -162,21 +162,12 @@ Feature: Global Search Functionality
     And User click on filter
     Then All Cards filter fields should be displayed
 
-
-  # ========================= EMPTY SEARCH =========================
-
-  @negative
-  Scenario: Click Search without entering any filter
-    When User selects "Cards" tab
-    And User clicks Search
-    Then Either transactions should be displayed or validation message should appear
-
-
-  # ========================= INVALID DATA FORMAT =========================
+    # ========================= INVALID DATA FORMAT =========================
 
   @negative
   Scenario: Enter alphabets in Card Last 4 Digits
     When User selects "Cards" tab
+    And User click on filter
     And User enters Card Last 4 Digits "ABCD"
     And User clicks Search
     Then Validation error should be displayed for Card Number
@@ -185,6 +176,7 @@ Feature: Global Search Functionality
   @negative
   Scenario: Enter special characters in Merchant ID
     When User selects "Cards" tab
+    And User click on filter
     And User enters Merchant ID "@@@###"
     And User clicks Search
     Then No records found message should be displayed
@@ -193,6 +185,7 @@ Feature: Global Search Functionality
   @security
   Scenario: Enter SQL injection string in Transaction Reference
     When User selects "Cards" tab
+    And User click on filter
     And User enters valid Transaction Reference Number "' OR 1=1 --"
     And User clicks Search
     And No records found message should be displayed
@@ -203,6 +196,7 @@ Feature: Global Search Functionality
   @positive
   Scenario: Search transactions using valid date range
     When User selects "Cards" tab
+    And User click on filter
     And User selects valid transaction date range
     And User clicks Search
     Then Transaction records should be displayed

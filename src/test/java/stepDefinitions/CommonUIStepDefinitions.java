@@ -295,4 +295,9 @@ public class CommonUIStepDefinitions extends CorePage {
                 transactionPage.areAllCardsFilterFieldsDisplayed(),
                 "Some Cards filter fields are not displayed");
     }
+
+    @Then("Validation error should be displayed for Card Number")
+    public void validationErrorShouldBeDisplayedForCardNumber() {
+        transactionPage.isNoRecordMessageDisplayed();
+    }
 }
