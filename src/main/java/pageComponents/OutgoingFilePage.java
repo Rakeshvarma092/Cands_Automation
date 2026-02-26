@@ -9,13 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.DriverUtils;
 
-import static DriverFactory.WebDriverFactory.getWait;
-
-public class FileProcessingPage extends DriverUtils {
+public class OutgoingFilePage extends DriverUtils {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    public FileProcessingPage(WebDriver driver) {
+    public OutgoingFilePage(WebDriver driver) {
         this.driver = driver;
         this.wait = getWait();
         PageFactory.initElements(driver, this);
