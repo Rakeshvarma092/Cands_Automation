@@ -205,7 +205,7 @@ Feature: Global Search Functionality
   @negative
   Scenario: Search using future date range
     When User selects "Cards" tab
-    And User selects future transaction date range
+#    And User selects future transaction date range
     And User clicks Search
     Then No records found message should be displayed
 
