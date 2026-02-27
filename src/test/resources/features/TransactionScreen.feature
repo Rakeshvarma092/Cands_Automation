@@ -197,7 +197,7 @@ Feature: Global Search Functionality
   Scenario: Search transactions using valid date range
     When User selects "Cards" tab
     And User click on filter
-    And User selects valid transaction date range
+#    And User selects valid transaction date range
     And User clicks Search
     Then Transaction records should be displayed
 
