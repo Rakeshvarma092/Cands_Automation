@@ -13,7 +13,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         features = {"src/test/resources/features"},
         glue = {"stepDefinitions"},
-        tags = "@Branch21",
+        tags = "@Branch1",
         plugin = {"pretty",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:testData/rerun.txt"},
