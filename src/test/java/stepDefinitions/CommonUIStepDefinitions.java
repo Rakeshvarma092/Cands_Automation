@@ -5,10 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import pageComponents.CorePage;
-import pageComponents.ManualTriggerPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -303,119 +301,4 @@ public class CommonUIStepDefinitions extends CorePage {
         transactionPage.isNoRecordMessageDisplayed();
     }
 
-    //============================================== OUTGOING FILE =====================================================
-    @When("user navigates to File Processing page")
-    public void userNavigatesToFileProcessingPage() {
-        outgoingFilePage.openFileProcessing();
-    }
-
-    @Then("Outgoing File header should be displayed")
-    public void outgoingFileHeaderShouldBeDisplayed() {
-        outgoingFilePage.isOutgoingFileHeaderVisible();
-    }
-
-    @And("user selects outgoing file transaction type {string}")
-    public void userSelectsOutgoingFileTransactionType(String transactionType) {
-        outgoingFilePage.selectTransactionType(transactionType);
-    }
-
-    @And("user selects {string}")
-    public void userSelects(String option) {
-        switch (option.trim().toLowerCase()) {
-            case "include today":
-                outgoingFilePage.selectIncludeToday();
-                break;
-            case "exclude today":
-                outgoingFilePage.selectExcludeToday();
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid option: " + option +
-                        ". Expected 'Include Today' or 'Exclude Today'.");
-        }
-    }
-
-    @And("user clicks Trigger Now")
-    public void userClicksTriggerNow() {
-        outgoingFilePage.clickTriggerNow();
-    }
-
-    @Then("trigger should be initiated successfully")
-    public void triggerShouldBeInitiatedSuccessfully() {
-        Assert.assertTrue(
-                outgoingFilePage.isTriggerSuccessMessageDisplayed(),
-                "Trigger success message was not displayed"
-                );
-    }
-
-    @When("user clicks Outgoing File tab")
-    public void userClicksOutgoingFileTab() {
-        outgoingFilePage.clickOutgoingFileTab();
-    }
-
-    @Then("validation message should be displayed for transaction type")
-    public void validationMessageShouldBeDisplayedForTransactionType() {
-        Assert.assertTrue(
-                outgoingFilePage.isTransactionTypeValidationDisplayed(),
-                "Transaction type validation message was not displayed"
-                );
-    }
-
-    @Then("validation message should be displayed for today selection")
-    public void validationMessageShouldBeDisplayedForTodaySelection() {
-        Assert.assertTrue(
-                outgoingFilePage.isTodaySelectionValidationDisplayed(),
-                "Today selection validation message was not displayed"
-                );
-    }
-
-    //============================================== MANUAL TRIGGER ====================================================
-    @When("user clicks Manual Trigger")
-    public void userClicksManualTrigger() {
-        outgoingFilePage.clickManualTriggerTab();
-    }
-
-    @Then("Manual Trigger page should be displayed")
-    public void manualTriggerPageShouldBeDisplayed() {
-        manualTriggerPage.isManualTriggerPageDisplayed();
-    }
-
-    @When("user selects file type {string}")
-    public void userSelectsFileType(String fileType) {
-        manualTriggerPage.selectFileType(fileType);
-    }
-
-    @Then("Confirm Trigger popup should be displayed")
-    public void confirmTriggerPopupShouldBeDisplayed() {
-        org.junit.Assert.assertTrue(
-                "Confirm Trigger popup is not displayed",
-                manualTriggerPage.isConfirmTriggerPopupDisplayed()
-        );
-    }
-
-    @When("user confirms trigger by clicking Yes")
-    public void userConfirmsTriggerByClickingYes() {
-        manualTriggerPage.clickConfirmTriggerYes();
-    }
-
-    @When("user cancels trigger by clicking Cancel")
-    public void userCancelsTriggerByClickingCancel() {
-        manualTriggerPage.clickCancelTrigger();
-    }
-
-
-    @Then("Confirm Trigger popup should be closed")
-    public void confirmTriggerPopupShouldBeClosed() {
-        org.junit.Assert.assertFalse(
-                "Confirm Trigger popup is still displayed",
-                manualTriggerPage.isConfirmTriggerPopupDisplayed()
-        );
-    }
-
-    @Then("Confirm Trigger popup should not be displayed")
-    public void confirmTriggerPopupShouldNotBeDisplayed() {
-        org.junit.Assert.assertFalse(
-                "Confirm Trigger popup is displayed",
-                manualTriggerPage.isConfirmTriggerPopupDisplayed()
-        );
-    }
 }
