@@ -301,4 +301,56 @@ public class CommonUIStepDefinitions extends CorePage {
         transactionPage.isNoRecordMessageDisplayed();
     }
 
+    //=========================================== SCHEME REJECT TRANSACTION PAGE ======================================
+
+    @And("User navigates to Scheme Reject Txns page")
+    public void user_navigates_to_scheme_reject_txns_page() {
+        schemeRejectTxnsPage.openPage();
+        Assert.assertTrue(schemeRejectTxnsPage.isSchemeRejectTxnsPageDisplayed(),
+                "Scheme Reject Txns page did not load");
+    }
+
+    @When("User enters RRN {string} on Scheme Reject Txns page")
+    public void user_enters_rrn_on_scheme_reject_txns_page(String rrn) {
+        schemeRejectTxnsPage.enterRRN(rrn);
+    }
+
+    @When("User enters ARN {string} on Scheme Reject Txns page")
+    public void user_enters_arn_on_scheme_reject_txns_page(String arn) {
+        schemeRejectTxnsPage.enterARN(arn);
+    }
+
+    @And("User clicks Search on Scheme Reject Txns page")
+    public void user_clicks_search_on_scheme_reject_txns_page() {
+        schemeRejectTxnsPage.clickSearch();
+    }
+
+    @And("User clicks Clear on Scheme Reject Txns page")
+    public void user_clicks_clear_on_scheme_reject_txns_page() {
+        schemeRejectTxnsPage.clickClear();
+    }
+
+    @Then("Matching record with {string} should be displayed in the results table")
+    public void matching_record_with_value_should_be_displayed_in_the_results_table(String expectedValue) {
+        Assert.assertTrue(schemeRejectTxnsPage.isValueMatchedInResults(expectedValue),
+                "Value " + expectedValue + " not found in results table");
+    }
+
+    @Then("All fields should be cleared on Scheme Reject Txns page")
+    public void all_fields_should_be_cleared_on_scheme_reject_txns_page() {
+        Assert.assertTrue(schemeRejectTxnsPage.areFieldsCleared(),
+                "Fields were not cleared as expected");
+    }
+
+    @Then("No records found message should be displayed on Scheme Reject Txns page")
+    public void no_records_found_message_should_be_displayed_on_scheme_reject_txns_page() {
+        Assert.assertTrue(schemeRejectTxnsPage.isNoRecordsMessageDisplayed(),
+                "Expected 'No records found' message but it was not displayed");
+    }
+
+    @Then("Validation error message should be displayed on Scheme Reject Txns page")
+    public void validation_error_message_should_be_displayed_on_scheme_reject_txns_page() {
+        Assert.assertTrue(schemeRejectTxnsPage.isValidationErrorMessageDisplayed(),
+                "Expected validation error message but it was not displayed");
+    }
 }

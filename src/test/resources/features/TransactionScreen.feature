@@ -1,4 +1,3 @@
-@GlobalSearch @Regression
 Feature: Global Search Functionality
 
   As a user of the application
